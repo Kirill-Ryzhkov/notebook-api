@@ -1,0 +1,166 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Notebook API"
+host: "localhost"
+tags:
+- name: "notebook"
+  description: "Получение, создание, удаление записей"
+schemes:
+- "http"
+paths:
+  /api/v1/notebook:
+    get:
+      tags:
+      - "notebook"
+      summary: "Получение всех записей"
+      description: ""
+      operationId: "getAllNotes"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Успешно"
+        "404":
+          description: "Запись не найдена"
+    post:
+      tags: 
+      - "notebook"
+      summary: "Добавление новой записи"
+      description: ""
+      operationId: "addNote"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "full_name"
+        in: "query"
+        description: "ФИО через пробел"
+        required: true
+        type: "string"
+      - name: "phone"
+        in: "query"
+        description: "Номер телефона"
+        required: true
+        type: "string"
+      - name: "email"
+        in: "query"
+        description: "Email"
+        required: true
+        type: "string"
+      - name: "company"
+        in: "query"
+        description: "Название компании"
+        required: false
+        type: "string"
+      - name: "birthday"
+        in: "query"
+        description: "Дата рождения формат 2022-06-28"
+        required: false
+        type: "string"
+      - name: "path_photo"
+        in: "query"
+        description: "Путь к фотографии"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "Успешно"
+        
+        
+  /api/v1/notebook/{id}:
+    get:
+      tags: 
+      - "notebook"
+      summary: "Получение записи по id"
+      description: ""
+      operationId: "getNoteById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Id записи"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "Успешно"
+        "404":
+          description: "Запись не найдена"
+    post:
+      tags: 
+      - "notebook"
+      summary: "Обновление существующей записи"
+      description: ""
+      operationId: "updateNote"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Id записи"
+        required: true
+        type: "integer"
+      - name: "full_name"
+        in: "query"
+        description: "ФИО через пробел"
+        required: false
+        type: "string"
+      - name: "phone"
+        in: "query"
+        description: "Номер телефона"
+        required: false
+        type: "string"
+      - name: "email"
+        in: "query"
+        description: "Email"
+        required: false
+        type: "string"
+      - name: "company"
+        in: "query"
+        description: "Название компании"
+        required: false
+        type: "string"
+      - name: "birthday"
+        in: "query"
+        description: "Дата рождения формат 2022-06-28"
+        required: false
+        type: "string"
+      - name: "path_photo"
+        in: "query"
+        description: "Путь к фотографии"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "Успешно"
+    delete:
+      tags: 
+      - "notebook"
+      summary: "Удаление записи по id"
+      description: ""
+      operationId: "deleteNoteById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Id записи"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "Успешно"
+        "404":
+          description: "Запись не найдена" 
