@@ -4,8 +4,12 @@
 2. cd notebook-api
 3. composer update
 4. Копируем файл .env.example и вставляем в корень сайта, переименовываем в .env или в терминале cp .env.example .env
-5. php artisan migrate
-6. ./vendor/bin/sail up
+5. ./vendor/bin/sail up
+В новом терминале
+6. docker ps
+7. Копируем id контейнера "start-container"
+8. docker exec -it <id container> bash
+9. php artisan migrate
 
 Swagger - http://localhost/api/documentation
 
